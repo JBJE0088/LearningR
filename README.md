@@ -1,6 +1,6 @@
 # LearningR: Intro R course
 
-# LearningR:
+
 
 TODO: Give a brief description of what your project is about
 

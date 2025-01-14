@@ -14,7 +14,23 @@ format: html
 
 ```{r setup}
 library(tidyverse)
+post_meal_data <- read_csv2(
+  here::here("data/post-meal-insulin.csv")
+)
 ```
+
+## Showing the data
+
+```{r}
+post_meal_data
+```
+
+```{r}
+glimpse(post_meal_data)
+```
+
+
+
 ## About me
 
 - Julian Bjerrekær
@@ -26,3 +42,7 @@ I am an **old** man. I live in *Copenhagen*.
 ```{r}
 3 * 3
 ```
+## Testing for Git
+
+
+The weather was sunny today.
