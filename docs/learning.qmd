@@ -1,0 +1,28 @@
+---
+title: "Reproducible document"
+author: "Julian Bjerrekaer"
+format: html
+---
+
+## Basics of R
+
+```{r}
+1 + 1
+```
+
+## Setup code chunk
+
+```{r setup}
+library(tidyverse)
+```
+## About me
+
+- Julian Bjerrekær
+- Steno Diabetes Center
+- University of Copenhagen
+
+I am an **old** man. I live in *Copenhagen*.
+
+```{r}
+3 * 3
+```
