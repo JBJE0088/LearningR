@@ -61,5 +61,19 @@ geom_histogram()
 
 @fig-bmi-histo
 
+## Exercise: discrete plots.
+
+```{r}
+#| fig-cap: "Distribution of glycemia"
+#| label: fig-glykemi-bar
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+```
+
+See @fig-glykemi-bar above for a cool plot!
+
+
+
+
 
 
