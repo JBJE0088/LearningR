@@ -10,6 +10,21 @@ format: html
 1 + 1
 ```
 
+## About me
+
+- Julian Bjerrekær
+- Steno Diabetes Center
+- University of Copenhagen
+
+I am an **old** man. I live in *Copenhagen*.
+
+```{r}
+3 * 3
+```
+## Testing for Git
+
+The weather was sunny today.
+
 ## Setup code chunk
 
 ```{r setup}
@@ -31,20 +46,20 @@ post_meal_data
 glimpse(post_meal_data)
 ```
 
-
-
-## About me
-
-- Julian Bjerrekær
-- Steno Diabetes Center
-- University of Copenhagen
-
-I am an **old** man. I live in *Copenhagen*.
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) +
+geom_histogram()
+```
 
 ```{r}
-3 * 3
+#| fig-cap: "Distribution of BMI"
+#| label: fig-bmi-histo
+#| message: false
+ggplot(post_meal_data, aes(x = BMI)) +
+geom_histogram()
 ```
-## Testing for Git
+
+@fig-bmi-histo
 
 
-The weather was sunny today.
+
