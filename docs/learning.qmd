@@ -140,3 +140,5 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 
 ## Pushing changes to remote
 
+## Pulling changes locally
+
