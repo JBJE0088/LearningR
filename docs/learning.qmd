@@ -72,8 +72,70 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 
 See @fig-glykemi-bar above for a cool plot!
 
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = glykemi)) + 
+  geom_bar()
+```
 
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) + 
+  geom_bar()
 
+```
 
+```{r}
+post_meal_data |>
+  ggplot(aes(x = Group, fill = as.character(glykemi))) + 
+  geom_bar(position = position_dodge())
+
+```
+
+## Putting two plots side by side
+
+```{r}
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+```
+
+```{r}
+  ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+```
+
+```{r side-by-side-figs}
+#| label: fig-bmi-glykemi
+#| message: false
+#| fig-cap: "BMI Kand Glykemi, side by side"
+#| fig-subcap: 
+#| - "Distribution of BMI"
+#| - "Distribution of glycemia"
+#| layout-ncol: 2
+
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
+```
+
+## Plotting two continuous variables 
+
+```{r}
+  ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point()
+```
+
+```{r}
+#| message: false
+#| fig-cap: "scatterplot showing BMI against AUC of blood glucose"
+#| label: fig-bmi-auc-pg
+ ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
+
+@fig-bmi-auc-pg
 
 
