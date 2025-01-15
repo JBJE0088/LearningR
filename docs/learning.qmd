@@ -140,5 +140,3 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 
 usethis::create_github_token()
 
-private = TRUE
-
