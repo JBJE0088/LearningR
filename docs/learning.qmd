@@ -138,7 +138,5 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 
 @fig-bmi-auc-pg
 
-usethis::create_github_token()
-
 ## Pushing changes to remote
 
