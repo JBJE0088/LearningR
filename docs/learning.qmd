@@ -34,6 +34,8 @@ library(tidyverse)
 post_meal_data <- read_csv2(
   here::here("data/post-meal-insulin.csv")
 )
+
+small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 ```
 
 ## Showing the data
@@ -141,4 +143,22 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 ## Pushing changes to remote
 
 ## Pulling changes locally
+
+
+## Selecting data
+```{r}
+#|message: false
+#|warning: false
+select(post_meal_data, Age)
+
+select(post_meal_data, Age, BMI, Weight)
+
+select(post_meal_data, -Group)
+
+select(post_meal_data, starts_with("PG"))
+
+select(post_meal_data, ends_with("DXA"))
+
+select(post_meal_data, contains("0"))
+```
 
