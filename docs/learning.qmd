@@ -38,8 +38,10 @@ post_meal_data <- read_csv2(
 small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi)
 
 tidier_post_meal_data <- small_post_meal_data |>
-  rename(auc_glucose = auc_pg,
-         auc_insulin = auc_ins) |>
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  ) |>
   filter(glykemi == 0) |>
   select(-glykemi)
 ```
@@ -56,7 +58,7 @@ glimpse(post_meal_data)
 
 ```{r}
 ggplot(post_meal_data, aes(x = BMI)) +
-geom_histogram()
+  geom_histogram()
 ```
 
 ```{r}
@@ -64,7 +66,7 @@ geom_histogram()
 #| label: fig-bmi-histo
 #| message: false
 ggplot(post_meal_data, aes(x = BMI)) +
-geom_histogram()
+  geom_histogram()
 ```
 
 @fig-bmi-histo
@@ -82,22 +84,20 @@ See @fig-glykemi-bar above for a cool plot!
 
 ```{r}
 post_meal_data |>
-  ggplot(aes(x = Group, fill = glykemi)) + 
+  ggplot(aes(x = Group, fill = glykemi)) +
   geom_bar()
 ```
 
 ```{r}
 post_meal_data |>
-  ggplot(aes(x = Group, fill = as.character(glykemi))) + 
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar()
-
 ```
 
 ```{r}
 post_meal_data |>
-  ggplot(aes(x = Group, fill = as.character(glykemi))) + 
+  ggplot(aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
-
 ```
 
 ## Putting two plots side by side
@@ -108,7 +108,7 @@ ggplot(post_meal_data, aes(x = BMI)) +
 ```
 
 ```{r}
-  ggplot(post_meal_data, aes(x = glykemi)) +
+ggplot(post_meal_data, aes(x = glykemi)) +
   geom_bar()
 ```
 
@@ -116,7 +116,7 @@ ggplot(post_meal_data, aes(x = BMI)) +
 #| label: fig-bmi-glykemi
 #| message: false
 #| fig-cap: "BMI Kand Glykemi, side by side"
-#| fig-subcap: 
+#| fig-subcap:
 #| - "Distribution of BMI"
 #| - "Distribution of glycemia"
 #| layout-ncol: 2
@@ -131,7 +131,7 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 ## Plotting two continuous variables 
 
 ```{r}
-  ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_point()
 ```
 
@@ -139,7 +139,7 @@ ggplot(post_meal_data, aes(x = glykemi)) +
 #| message: false
 #| fig-cap: "scatterplot showing BMI against AUC of blood glucose"
 #| label: fig-bmi-auc-pg
- ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
   geom_point() +
   geom_smooth()
 ```
@@ -175,8 +175,10 @@ small_post_meal_data |>
   rename(auc_glucose = auc_pg)
 
 x <- small_post_meal_data |>
-  rename(auc_glucose = auc_pg,
-         auc_insulin = auc_ins)
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  )
 ```
 
 ```{r}
@@ -241,8 +243,29 @@ small_post_meal_data |>
 
 ```{r}
 tidier_post_meal_data |>
-  mutate(insulin_glucose_ratio = auc_insulin/auc_glucose,
-         Group = if_else(Group == "CTR", "Control", "First-degree relative"))
+  mutate(K
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
 
+## Practice with filter and mutate
 
+#Task 1
+```{r}
+post_meal_data |>
+  filter(BMI >= 20 & BMI <= 40 & Group == "FDR")
+```
+There are 16 participants with a BMI more than or equal to 20 AND less than or equal to 40 AND are in the FDR Group.
+
+# Task 2
+
+```{r}
+post_meal_data |>
+  mutate(
+    percent_body_fat = (Fat.mass.DXA / Weight) * 100
+  ) |>
+  filter(percent_body_fat > 30)
+```
+
+There are 10 participants with a bodyfat greater than 30%. 
