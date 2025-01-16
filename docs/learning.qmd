@@ -344,7 +344,7 @@ post_meal_data |>
   mutate(hyperglycemia = if_else(glykemi == 1, "Yes", "No")) |>
   ggplot(aes(x = Group, fill = hyperglycemia)) +
   geom_bar(position = position_dodge()) +
-  scale_fill_viridis_d( option = "cividis")
+  scale_fill_viridis_d(option = "cividis")
 ```
 
 # Tasks 3. and 4.
@@ -356,4 +356,28 @@ post_meal_data |>
   scale_colour_viridis_c(option = "inferno")
 ```
 
+## Calculating summary statistics
 
+```{r}
+tidied_post_meal_data |>
+  summarise(
+    max_bmi = max(BMI),
+    min_bmi = min(BMI)
+  )
+```
+
+```{r}
+summary(tidied_post_meal_data$BMI)
+```
+
+## Summarise with split
+
+```{r}
+tidied_post_meal_data |>
+  group_by(Group) |>
+  summarise(
+    mean_age = mean(Age),
+    mean_bmi = mean(BMI)
+  ) |>
+  ungroup()
+```
